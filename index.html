@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeX服务器官方网站🎉</title>
+    <meta name="description" content="TimeX服务器 - 生存、冒险、机械、建筑、合作于一体的沉浸式末日世界。教程、下载、公告一站式服务。">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://tc-new.z.wiki/autoupload/f/QrpKZGAGJXSSN9csMsDdQG69Gne2iXL2aoFaX2jiRbOyl5f0KlZfm6UsKj-HyTuv/20250907/wXuP/1536X864/DE48B1D14DDF6578417B3C0D048787AE.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ecf0f1;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(52, 58, 64, 0.95);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: white;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .nav {
+            background: rgba(40, 44, 52, 0.9);
+            padding: 0.8rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 首页样式 —— 原 container 结构 */
+        .home-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .home-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .announcements {
+            background: rgba(52, 73, 94, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .announcements h2 {
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f39c12;
+        }
+
+        .announcement {
+            background: rgba(44, 62, 80, 0.9);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #e74c3c;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .announcement:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .announcement h3 {
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .announcement .date {
+            font-size: 0.85rem;
+            color: #bdc3c7;
+            margin-bottom: 0.5rem;
+        }
+
+        .announcement p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .download {
+            background: rgba(52, 73, 94, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .download h2 {
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 1rem 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .download-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .download-btn {
+                width: 100%;
+                padding: 14px 20px;
+            }
+        }
+
+        .download-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* 教程页样式 */
+        .tutorial-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background: rgba(52, 73, 94, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar h2 {
+            color: #9b59b6;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #9b59b6;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .content {
+            background: rgba(52, 73, 94, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .content h2 {
+            color: #f1c40f;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        .content h3 {
+            color: #fff;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .content p, .content ul, .content ol {
+            margin-bottom: 1.2rem;
+        }
+
+        .content code {
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(26, 37, 48, 0.9);
+            margin-top: 3rem;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://cdn.jsdelivr.net/gh/IdreesInc/Minecraft-Font@main/Minecraft.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/IdreesInc/Minecraft-Font@main/Minecraft.woff') format('woff'),
+                 url('https://cdn.jsdelivr.net/gh/IdreesInc/Minecraft-Font@main/Minecraft.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .minecraft-font {
+            font-family: 'Minecraft', 'Courier New', monospace;
+            animation: pixelPop 0.5s ease-out;
+        }
+
+        @keyframes pixelPop {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="minecraft-font">TimeX服务器官方网站🎉</h1>
+        <p>生存 · 冒险 · 机械 · 建筑 · 合作</p>
+    </header>
+
+    <div class="nav">
+        <a href="#home">🏠 首页</a>
+        <a href="#tutorial">📖 教程中心</a>
+    </div>
+
+    <!-- 动态内容区域 -->
+    <main id="app">
+        <!-- 内容由 JS 动态填充 -->
+    </main>
+
+    <footer>
+        <p>© 2025 CRstudio · 禁止商业用途</p>
+    </footer>
+
+    <script>
+        // 🧠 路由系统
+        const routes = {
+            home: renderHome,
+            tutorial: renderTutorial
+        };
+
+        // 🎨 渲染首页内容
+        function renderHome() {
+            return `
+                <div class="home-container">
+                    <div class="announcements">
+                        <h2>📢 最新公告</h2>
+                        <div class="announcement">
+                            <h3>【更新】TimeX有官方网站啦</h3>
+                            <div class="date">2025年9月7日</div>
+                            <p>以后可以在这里了解TimeX近况，也可以下载服务器整合包，对网站有任何问题可以在官方讨论群@RJ1145142哦😽</p>
+                        </div>
+                        <div class="announcement">
+                            <h3>【新人必看】TimeX的世界观</h3>
+                            <div class="date">2025年9月7日</div>
+                            <p>公元7891年，人类对地球的贪婪榨取终于迎来了炽热的终焉。就在幸存者们疯狂囤积着最后的净水和冷却剂，试图在灼浪中苟延残喘之际，南极，那最后的冰封之地，也迎来了毁灭性的崩塌。数百万年前被低温封印的“霜骸之源”随冰川消融而苏醒。这种远古的恶意在温暖（相对其冰封状态而言）的海水中急速变异，获得了对哺乳动物近乎绝对的致命性与传染性。它们以难以想象的速度蔓延，感染者会在极度的痛苦中高热沸腾，最终成为活动腐肉。然而，命运的嘲弄远未结束。全球变暖引发的连锁反应，最终撼动了沉睡的南极冰下火山群。伴随着震耳欲聋的巨响和撕裂天地的震动，冰与火之歌在极地奏响。巨量的火山灰如同死亡的幕布冲入平流层，几乎彻底遮蔽了太阳的光辉。寒潮纪元降临了。曾经炙烤大地的酷暑，在短短数周内被致命的极寒所取代。肆虐的UCP病毒与冰封的世界—瞬间抹去了绝大无准备的生命。城市化为冰封的钢铁墓园，荒野遍布着猩红的血晶（凝固的感染者血液）与覆盖着灰雪的遗体。''你们，是最后已知的一批幸存者... 挣扎在霜骸与永冬的夹缝中...'' ''活下去... 不惜一切代价... 活下去...''</p>
+                        </div>
+                    </div>
+                    <div class="download">
+                        <h2>📥 下载整合包</h2>
+                        <p>一键下载完整客户端，包含所有必需模组和配置</p>
+                        <a href="https://www.123684.com/s/slfpvd-kLmxh" class="download-btn" download>立即下载 v2.2</a>
+                        <div class="download-info">
+                            文件大小：178 MB<br>
+                            适用版本：Minecraft 1.20.1<br>
+                            更新日期：2025-09-07<br>
+                            网盘密码：9178
+                        </div>
+                        <hr style="margin: 1.5rem 0; border-color: #444;">
+                        <h2>🎮 加入我们</h2>
+                        <p>QQ群：<br><strong>175810111</strong></p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 🎓 渲染教程页内容
+        function renderTutorial() {
+            return `
+                <div class="tutorial-container">
+                    <div class="sidebar">
+                        <h2>📚 教程目录</h2>
+                        <ul>
+                            <li><a href="#tutorial#tutorial1">新人玩家生存指南</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h2>欢迎来到 TimeX 教程中心</h2>
+                        <p>无论你是刚加入的新手，还是想精通科技建筑的老玩家，这里都有你需要的指南！</p>
+
+                        <div id="tutorial1">
+                            <h3>新人玩家生存指南</h3>
+                            <p>敬请期待</p>
+                            <ul>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 🔄 路由切换函数
+        function navigate() {
+            const app = document.getElementById('app');
+            const hash = window.location.hash.replace('#', '') || 'home';
+
+            // 处理子锚点：如 #tutorial#tutorial1
+            const [route, subhash] = hash.split('#');
+            const renderFn = routes[route] || routes.home;
+
+            app.innerHTML = renderFn();
+
+            // 如果有子锚点，滚动到对应位置
+            if (subhash) {
+                setTimeout(() => {
+                    const el = document.getElementById(subhash);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        }
+
+        // 🚦 初始化
+        window.addEventListener('DOMContentLoaded', navigate);
+        window.addEventListener('hashchange', navigate);
+    </script>
+
+</body>
+</html>
